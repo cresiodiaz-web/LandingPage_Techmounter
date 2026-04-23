@@ -1,9 +1,722 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>Teste</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Consultoria Especializada | Manufatura Eletrônica Automotiva, Aeroespacial e mais</title>
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      background-color: #f8fafc;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header & Navegação */
+    header {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(8px);
+      color: white;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #60a5fa;
+    }
+
+    .btn-outline-light {
+      border: 1.5px solid #60a5fa;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-outline-light:hover {
+      background: #60a5fa;
+      color: #0f172a;
+    }
+
+    /* Seções */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #0f172a;
+      position: relative;
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: #475569;
+      margin-bottom: 48px;
+      max-width: 700px;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(145deg, #0b1120 0%, #1e293b 100%);
+      color: white;
+      padding: 100px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      line-height: 1.2;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+
+    .highlight {
+      color: #60a5fa;
+      border-bottom: 3px solid #a78bfa;
+      display: inline-block;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      margin-bottom: 32px;
+    }
+
+    .badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+      padding: 14px 36px;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .stat-item h3 {
+      font-size: 2rem;
+      color: #a78bfa;
+    }
+
+    .hero-image-placeholder {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 30px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      text-align: center;
+    }
+
+    .hero-image-placeholder i {
+      font-size: 7rem;
+      color: #60a5fa;
+      margin-bottom: 16px;
+    }
+
+    /* Serviços */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e2e8f0;
+      transition: all 0.25s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -8px rgba(0, 0, 0, 0.1);
+      border-color: #cbd5e1;
+    }
+
+    .service-icon {
+      background: #e0f2fe;
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      color: #0369a1;
+      font-size: 28px;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: #475569;
+      margin-bottom: 16px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      background: #f1f5f9;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #334155;
+    }
+
+    /* Sobre / Diferenciais */
+    .about-wrapper {
+      background: white;
+      border-radius: 40px;
+      padding: 48px;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+      border: 1px solid #eef2f6;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .skill-item {
+      margin-bottom: 24px;
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #2563eb, #7c3aed);
+      border-radius: 10px;
+      width: 0%;
+      transition: width 1s ease;
+    }
+
+    /* Projetos/Portfolio */
+    .projects-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .project-item {
+      background: white;
+      padding: 24px 28px;
+      border-radius: 20px;
+      flex: 1 1 200px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 8px 15px -5px rgba(0,0,0,0.02);
+    }
+
+    .project-item i {
+      font-size: 2.2rem;
+      color: #2563eb;
+      margin-bottom: 16px;
+    }
+
+    /* Contato */
+    .contact-section {
+      background: #0f172a;
+      color: white;
+      border-radius: 50px;
+      padding: 60px 48px;
+      margin: 40px 0;
+    }
+
+    .contact-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .contact-btn {
+      background: white;
+      color: #0f172a;
+      padding: 16px 32px;
+      border-radius: 60px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .contact-btn i {
+      font-size: 1.4rem;
+    }
+
+    .contact-btn:hover {
+      background: #60a5fa;
+      color: white;
+    }
+
+    /* Footer */
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid #e2e8f0;
+      color: #64748b;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .social-links a {
+      color: #64748b;
+      font-size: 2rem;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-links a .fa-linkedin {
+      color: #0A66C2;
+    }
+
+    .social-links a .fa-whatsapp {
+      color: #25D366;
+    }
+
+    .social-links a .fa-envelope {
+      color: #64748b;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.1);
+    }
+
+    .social-links a:hover .fa-envelope {
+      color: #2563eb;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .hero-grid, .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .nav-links {
+        gap: 16px;
+      }
+      .logo {
+        font-size: 1.4rem;
+      }
+      .contact-flex {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-btn {
+        white-space: normal;
+        word-break: keep-all;
+      }
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .contact-section {
+        padding: 40px 24px;
+      }
+      .badge-container {
+        justify-content: center;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Site funcionando 🚀</h1>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo"><i class="fas fa-microchip" style="margin-right: 8px;"></i> TECH MOUNTER</div>
+      <div class="nav-links">
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Expertise</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato" class="btn-outline-light">Contato</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge-container">
+          <span class="badge"><i class="fas fa-car"></i> Automotivo</span>
+          <span class="badge"><i class="fas fa-satellite"></i> Aeroespacial</span>
+          <span class="badge"><i class="fas fa-shield-alt"></i> Defesa</span>
+          <span class="badge"><i class="fas fa-heartbeat"></i> Médico</span>
+          <span class="badge"><i class="fas fa-mobile-alt"></i> Bens de Consumo</span>
+        </div>
+        <h1>Manufatura eletrônica de <span class="highlight">alta performance</span></h1>
+        <p>Consultoria especializada em processos SMD, PTH e iluminação automotiva para os segmentos mais exigentes da indústria. Atuo lado a lado com equipes para elevar eficiência, garantir qualidade e entregar resultados consistentes.</p>
+        <a href="#contato" class="btn-primary"><i class="fas fa-calendar-check"></i> Agendar uma conversa</a>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <h3>Amplie</h3>
+            <p>Projetos entregues / OEE Médio atingido</p>
+          </div>
+          <div class="stat-item">
+            <h3>Reduza</h3>
+            <p>Perdas, Falhas e Retrabalho</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image-placeholder">
+        <i class="fas fa-industry"></i>
+        <i class="fas fa-microchip" style="font-size: 4rem; margin-left: 15px;"></i>
+        <h3 style="margin-top: 16px;">Consultoria & Mentoria Técnica</h3>
+        <p style="color:#94a3b8;">Automotivo · Aeroespacial · Defesa · Médico · Consumo</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section id="servicos">
+    <div class="container">
+      <h2 class="section-title">Como posso te ajudar</h2>
+      <p class="section-subtitle">Atuação focada em resolver gargalos, estruturar processos e garantir a competitividade da sua operação — com experiência comprovada nos segmentos automotivo, aeroespacial, defesa, médico e bens de consumo.</p>
+      <div class="services-grid">
+        
+        <!-- Card 1: Melhoria Contínua e OEE -->
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Melhoria Contínua e OEE</h3>
+          <p>Aplico metodologias Lean, Kaizen e TPM para identificar perdas, reduzir setups (SMED) e aumentar a eficiência global dos equipamentos. O foco é transformar indicadores em resultados reais no chão de fábrica.</p>
+          <div class="tag-list">
+            <span class="tag">OEE</span>
+            <span class="tag">Kaizen</span>
+            <span class="tag">TPM</span>
+            <span class="tag">SMED</span>
+            <span class="tag">VSM</span>
+          </div>
+        </div>
+        
+        <!-- Card 2: Core Tools da Qualidade e IMDS -->
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+          <h3>Core Tools da Qualidade e IMDS</h3>
+          <p>Estruturo a documentação técnica para o setor automotivo e além: APQP, FMEA, PPAP, CEP e MSA. Inclui suporte completo ao IMDS para homologação de materiais junto às montadoras, garantindo conformidade e rastreabilidade.</p>
+          <div class="tag-list">
+            <span class="tag">APQP</span>
+            <span class="tag">FMEA</span>
+            <span class="tag">PPAP</span>
+            <span class="tag">CEP</span>
+            <span class="tag">MSA</span>
+            <span class="tag">IMDS</span>
+          </div>
+        </div>
+        
+        <!-- Card 3: Gestão de Projetos e NPI -->
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-project-diagram"></i></div>
+          <h3>Gestão de Projetos e NPI</h3>
+          <p>Conduzo projetos do conceito à produção (NPI - New Product Introduction), garantindo que novos produtos entrem em linha sem surpresas. Cronograma, custos, riscos e comunicação clara com todas as partes interessadas.</p>
+          <div class="tag-list">
+            <span class="tag">NPI</span>
+            <span class="tag">Cronograma</span>
+            <span class="tag">Custos</span>
+            <span class="tag">Riscos</span>
+            <span class="tag">Stakeholders</span>
+          </div>
+        </div>
+        
+        <!-- Card 4: Gestão de BOM e Catálogo de Produtos -->
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-list-ul"></i></div>
+          <h3>Gestão de BOM e Catálogo de Produtos</h3>
+          <p>Organizo e mantenho a estrutura de materiais (BOM) de forma precisa, garantindo que engenharia, compras e produção trabalhem com a mesma informação. Estruturação de catálogos de Produtos do Siscomex.</p>
+          <div class="tag-list">
+            <span class="tag">BOM</span>
+            <span class="tag">SAP x Shop Floor</span>
+            <span class="tag">Catálogo de Produtos</span>
+            <span class="tag">Gestão de Mudanças</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre / Skills -->
+  <section id="sobre">
+    <div class="container">
+      <div class="about-wrapper">
+        <div class="about-grid">
+          <div>
+            <h2 class="section-title" style="margin-top: 0;">Conhecimento que vem do chão de fábrica</h2>
+            <p style="margin-bottom: 28px; color: #334155;">Há mais de dez anos atuo em manufatura eletrônica nos segmentos automotivo, aeroespacial, defesa, médico e bens de consumo. Já estive onde você está: com prazos apertados, processos instáveis e a necessidade de fazer mais com menos. Foi essa vivência que me tornou um resolvedor de problemas.</p>
+            <p style="margin-bottom: 28px;"><i class="fas fa-check-circle" style="color:#2563eb;"></i> <strong>Minha especialidade:</strong> Unir o conhecimento técnico da manufatura com a disciplina das normas e core tools.</p>
+            <p><i class="fas fa-check-circle" style="color:#2563eb;"></i> <strong>Como trabalho:</strong> Escuta ativa, diagnóstico preciso e transferência de conhecimento para sua equipe.</p>
+          </div>
+          <div>
+            <h3 style="margin-bottom: 24px;">Pilares da minha atuação</h3>
+            <div class="skill-item">
+              <div class="skill-header"><span>Melhoria Contínua / OEE</span> <span>95%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header"><span>Core Tools / IMDS</span> <span>90%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:90%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header"><span>Gestão de Projetos / NPI</span> <span>92%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header"><span>Gestão de BOM / Catálogo de Produtos</span> <span>88%</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projetos em destaque -->
+  <section id="projetos">
+    <div class="container">
+      <h2 class="section-title">Resultados que falam por si</h2>
+      <p class="section-subtitle">Cases de sucesso em diferentes segmentos da manufatura eletrônica.</p>
+      <div class="projects-showcase">
+        <div class="project-item">
+          <i class="fas fa-chart-bar"></i>
+          <h3>Melhoria Contínua</h3>
+          <p>Projeto kaizen em linha PTH com redução de setup e paradas não programadas.</p>
+        </div>
+        <div class="project-item">
+          <i class="fas fa-file-signature"></i>
+          <h3>Homologação IMDS</h3>
+          <p>Preparação completa da documentação IMDS para novo produto em montadora.</p>
+        </div>
+        <div class="project-item">
+          <i class="fas fa-rocket"></i>
+          <h3>NPI</h3>
+          <p>Gestão completa do NPI para novos produtos, do protótipo à SOP.</p>
+        </div>
+        <div class="project-item">
+          <i class="fas fa-sitemap"></i>
+          <h3>Reestruturação de BOM</h3>
+          <p>Revisão e padronização da BOM, reduzindo erros de compra, atendendo ao Catálogo de Produtos do Siscomex.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato / CTA -->
+  <section id="contato">
+    <div class="container">
+      <div class="contact-section">
+        <div class="contact-flex">
+          <div>
+            <h2 style="font-size: 2.2rem; margin-bottom: 12px;">Vamos conversar sobre seu projeto?</h2>
+            <p style="font-size: 1.2rem; opacity: 0.9;">Seja no segmento automotivo, aeroespacial, defesa, médico ou bens de consumo — estou a uma mensagem de distância para entender seu desafio.</p>
+          </div>
+          <div>
+            <a href="#" id="contactBtn" class="contact-btn"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
+          </div>
+        </div>
+        <div style="margin-top: 30px; display: flex; gap: 30px; flex-wrap: wrap;">
+          <span><i class="fas fa-phone-alt"></i> 55 35 98406-7208</span>
+          <span><i class="fas fa-map-marker-alt"></i> Minas Gerais</span>
+          <span><i class="fas fa-clock"></i> 9:00 às 17:00 hs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-content">
+    <div>© 2026 Tech Mounter – Consultoria em Manufatura Eletrônica | Automotivo · Aeroespacial · Defesa · Médico · Bens de Consumo</div>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/cresio-dias-90824a56" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://wa.me/5535984067208" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:cresiodiaz@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    // Interação suave com os links do menu
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === "#" || href === "") return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Botão de contato - abre WhatsApp
+    const contactBtn = document.getElementById('contactBtn');
+    if (contactBtn) {
+      contactBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.open('https://wa.me/5535984067208?text=Olá!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20uma%20consultoria.', '_blank');
+      });
+    }
+
+    // Animação das barras de progresso ao entrar na view
+    const progressBars = document.querySelectorAll('.progress-fill');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const bar = entry.target;
+          const width = bar.style.width;
+          bar.style.width = '0%';
+          setTimeout(() => {
+            bar.style.width = width;
+          }, 50);
+          observer.unobserve(bar);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    progressBars.forEach(bar => observer.observe(bar));
+  })();
+</script>
+
 </body>
 </html>
